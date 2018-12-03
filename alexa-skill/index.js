@@ -75,10 +75,10 @@ function getRoute() {
   return rp('http://api.ebongo.org/prediction?stopid=2081')
 }
 
-const SlaterBusScheduleHandler = {
+const SlaterBusRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'SlaterBusSchedule';
+      && handlerInput.requestEnvelope.request.intent.name === 'SlaterBusRequest';
   },
   async handle(handlerInput) {
 
@@ -106,10 +106,10 @@ function getRoute() {
   return rp('http://api.ebongo.org/prediction?stopid=0001')
 }
 
-const DowntownBusScheduleHandler = {
+const DowntownBusRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'DowntownBusSchedule';
+      && handlerInput.requestEnvelope.request.intent.name === 'DowntownBusRequest';
   },
   async handle(handlerInput) {
 
@@ -141,8 +141,8 @@ exports.handler = skillBuilder
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
-    DowntownBusScheduleHandler,
-    SlaterBusScheduleHandler
+    DowntownBusRequestHandler,
+    SlaterBusRequestHandler
 )
   .addErrorHandlers(ErrorHandler)
   .lambda();

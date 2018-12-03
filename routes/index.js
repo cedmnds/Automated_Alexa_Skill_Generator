@@ -23,6 +23,7 @@ router.get('/help', function(req, res, next) {
 router.post('/generateSkill', function(req, res){
   let lambdaFilePath = 'alexa-skill/index.js'
   let skillFilePath = 'alexa-skill/skill.json'
+  let node_modules = 'alexa-skill/package-lock.json'
   let intents = []
   let jsonRaw = req.body['content']
   let jsonObject = JSON.parse(jsonRaw.replace(/'/g, '"'));
@@ -41,7 +42,8 @@ router.post('/generateSkill', function(req, res){
 
   res.zip([
     {path: 'alexa-skill/index.js', name: 'index.js'},
-    {path: 'alexa-skill/skill.json', name: 'skill.json'}
+    {path: 'alexa-skill/skill.json', name: 'skill.json'},
+    {path: 'alexa-skill/package.json', name: 'package.json'}
   ])
 });
 
